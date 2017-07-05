@@ -1,24 +1,25 @@
 import qbs 1.0
 
-Application {
+Project {
 
-    name: "tests"
-    files: [
-        "main.cpp",
-        "qparseobjecttest.cpp",
-        "qparseobjecttest.h",
-        "qparsequerytest.cpp",
-        "qparsequerytest.h",
-        "qparseusertest.cpp",
-        "qparseusertest.h",
-    ]
-    cpp.cxxLanguageVersion: "c++11"
-    cpp.defines: [
-        "QT_DEPRECATED_WARNINGS",
-    ]
+    TestApplication {
+        name: "all_tests"
+        cpp.defines: base.concat("ALL_TESTS")
+    }
 
-    Depends { name: "parse" }
-    Depends { name: "cpp" }
-    Depends { name: "Qt"; submodules: ["core", "network", "testlib"] }
+    TestApplication {
+        name: "test_parse_object"
+        cpp.defines: base.concat("TEST_PARSE_OBJECT")
+    }
+
+    TestApplication {
+        name: "test_parse_user"
+        cpp.defines: base.concat("TEST_PARSE_USER")
+    }
+
+    TestApplication {
+        name: "test_parse_query"
+        cpp.defines: base.concat("TEST_PARSE_QUERY")
+    }
 
 }

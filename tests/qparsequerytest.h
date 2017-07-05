@@ -5,7 +5,7 @@
 
 #include <QParseQuery>
 
-//using namespace org::parseplatform;
+#include "autotest.h"
 
 class QParseQueryTest : public QObject
 {
@@ -15,5 +15,9 @@ private slots:
 private:
     org::parseplatform::QParseQuery parseQuery;
 };
+
+#if defined(ALL_TESTS) || defined(TEST_PARSE_QUERY)
+DECLARE_TEST(QParseQueryTest)
+#endif
 
 #endif // QPARSEQUERYTEST_H
